@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= (typeof title !== 'undefined') ? title : 'SAT - Sistema de Alerta Temprana' %></title>
+  <meta name="description" content="<%= (typeof description !== 'undefined') ? description : 'Sistema de Alerta Temprana para profesionales de Seguridad e Higiene' %>">
+  <meta name="robots" content="index, follow">
+  <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+  <%- include('../partials/navbar') %>
+
+  <main>
+    <%- body %>
+  </main>
+
+  <%- include('../partials/footer') %>
+  <script src="/js/main.js"></script>
+</body>
+</html>

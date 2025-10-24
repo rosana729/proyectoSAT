@@ -136,3 +136,46 @@ document.addEventListener('click', (e) => {
     e.preventDefault();
   }
 });
+// =============================
+// FAQ Toggle Animation
+// =============================
+document.addEventListener('DOMContentLoaded', () => {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach(button => {
+    button.addEventListener('click', () => {
+      const faqItem = button.parentElement;
+      const answer = faqItem.querySelector('.faq-answer');
+
+      // Cierra cualquier otra pregunta abierta
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+          item.querySelector('.faq-answer').style.maxHeight = null;
+        }
+      });
+
+      // Alterna la actual
+      faqItem.classList.toggle('active');
+
+      if (faqItem.classList.contains('active')) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      } else {
+        answer.style.maxHeight = null;
+      }
+    });
+  });
+});
+
+// =============================
+// Scroll suave para los enlaces
+// =============================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});

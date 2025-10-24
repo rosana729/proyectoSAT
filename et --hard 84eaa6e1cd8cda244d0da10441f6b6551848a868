@@ -1,0 +1,98 @@
+[33mcommit f2b74c3c623f829f86b2928d00eab42530423c4e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 15:28:22 2025 -0300
+
+    Descripción de los cambios realizados
+
+[33mcommit c5c7f47d410dca8ca753806d72e20e90f1321ae1[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 15:04:42 2025 -0300
+
+    Revierto los últimos 6 commits para restaurar versión estable
+
+[33mcommit 4d83df86ff6b93961eae49823ff7ee67735e6a5d[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 14:43:19 2025 -0300
+
+    Actualizo scripts y controladores para SGC
+
+[33mcommit 6dd54c8fa11b57f12ee361d8ba2d1e039436a4f4[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 14:27:06 2025 -0300
+
+    Fix: Limpiar footer duplicado y corregir main.js
+
+[33mcommit 30358ca083ac056ef7bd397b5b4066c183244af4[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 12:26:18 2025 -0300
+
+    Fix: Limpiar footer duplicado y corregir main.js
+
+[33mcommit 3df0ce2526b64cc1a04e0bd4fcd546a4b9304037[m[33m ([m[1;31morigin/version-estable[m[33m, [m[1;32mversion-limpia[m[33m, [m[1;32mversion-estable[m[33m)[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 11:45:55 2025 -0300
+
+    final ultimo
+
+[33mcommit 9e60ef43bb2ea38914776fb3337235daf3698600[m
+Merge: 4119ca3 25a192a
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 10:50:24 2025 -0300
+
+    Fix: Limpiar footer duplicado y corregir main.js
+
+[33mcommit 4119ca3a7e077d31250ee69eefcdf1d47cb0128b[m
+Merge: f3a843e 0a45ea0
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 10:29:11 2025 -0300
+
+    Actualizo main.js con mejoras en scroll y FAQ
+
+[33mcommit 25a192aadad7691628bdf32ab6393a2966108dbb[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 10:22:55 2025 -0300
+
+    Update footer.ejs
+
+[33mcommit f3a843e3cbeef69619ab57e9378b5444c4774b00[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 10:15:18 2025 -0300
+
+    Actualizo main y footer con mejoras visuales
+
+[33mcommit 0a45ea039a284723ad1ad01fd914df70739c6fca[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 10:00:57 2025 -0300
+
+    Update footer.ejs
+
+[33mcommit abcf65c11a14dc654b2a0024c1b17efa0c026837[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Thu Oct 23 06:52:51 2025 -0300
+
+    Descripción breve de los cambios
+
+[33mcommit 84eaa6e1cd8cda244d0da10441f6b6551848a868[m
+Merge: 8976ce7 a551ce2
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Wed Oct 22 14:43:36 2025 -0300
+
+    Resolve merge conflicts: keep local versions
+
+[33mcommit 8976ce7699aa655f522c3598d168216f1fc8aef5[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Wed Oct 22 14:35:27 2025 -0300
+
+    Primer commit
+
+[33mcommit a551ce26aafd6db911685f56e2afe3be91cfe439[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Wed Oct 22 12:51:06 2025 -0300
+
+    Add files via upload
+
+[33mcommit 53969fc7b5f88e3df28fbb77107cde42410af242[m
+Author: rosana729 <127875077+rosana729@users.noreply.github.com>
+Date:   Wed Oct 22 12:25:26 2025 -0300
+
+    Initial commit

@@ -413,29 +413,21 @@ nav.scrolled {
     justify-content: space-between;
     align-items: center;
     font-weight: 600;
-    color: var(--dark);
-    transition: all 0.3s;
-}
-
-.faq-question:hover {
-    background: var(--light-gray);
+    transition: background-color 0.3s;
 }
 
 .faq-answer {
-    padding: 0 1.5rem;
     max-height: 0;
     overflow: hidden;
-    transition: all 0.3s ease;
-    color: var(--gray);
+    transition: max-height 0.3s ease-out;
 }
 
 .faq-item.active .faq-answer {
-    max-height: 200px;
+    max-height: 500px;
     padding: 0 1.5rem 1.5rem;
 }
 
 .faq-toggle {
-    font-size: 1.5rem;
     transition: transform 0.3s;
 }
 

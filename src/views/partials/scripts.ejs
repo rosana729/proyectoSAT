@@ -112,3 +112,49 @@
           <p>Informes digitales firmados y listos para entregar al instante</p>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="faq-container">
+    <h2 class="section-title">Preguntas Frecuentes</h2>
+    <div class="faq-items">
+      <div class="faq-item">
+        <div class="faq-question">¿Cómo funciona el sistema?</div>
+        <div class="faq-answer">El sistema permite completar recorridas y reportes sin necesidad de internet. Todo se sincroniza automáticamente al reconectarte.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">¿Puedo firmar digitalmente?</div>
+        <div class="faq-answer">Sí, puedes firmar digitalmente desde el móvil en segundos, sin impresiones. Generá informes digitales listos para entregar.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-question">¿Qué tipo de informes puedo generar?</div>
+        <div class="faq-answer">Puedes generar informes de recorridas, controles y firmas.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JavaScript for FAQ Toggle -->
+<script>
+// FAQ Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.faq-item').forEach(item => {
+        item.querySelector('.faq-question').addEventListener('click', () => {
+            const wasActive = item.classList.contains('active');
+            
+            // Cerrar todos
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active');
+            });
+            
+            // Abrir el clickeado si no estaba activo
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+});
+</script>

@@ -1,6 +1,6 @@
 {
   "name": "sat-project",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sistema de Administración de Extintores - Proyecto Node.js con Express y Supabase",
   "main": "src/index.js",
   "type": "module",

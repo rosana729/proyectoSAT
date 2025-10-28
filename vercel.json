@@ -2,22 +2,26 @@
   "version": 2,
   "builds": [
     {
-      "src": "src/index.js",
+      "src": "api/index.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
+      "src": "/css/(.*)",
+      "dest": "/src/public/css/$1"
+    },
+    {
+      "src": "/js/(.*)",
+      "dest": "/src/public/js/$1"
+    },
+    {
+      "src": "/images/(.*)",
+      "dest": "/src/public/images/$1"
+    },
+    {
       "src": "/(.*)",
-      "dest": "src/index.js"
+      "dest": "/api/index.js"
     }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  },
-  "functions": {
-    "src/index.js": {
-      "maxDuration": 30
-    }
-  }
+  ]
 }

@@ -1,0 +1,167 @@
+<!-- Barra de navegación principal -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
+    <div class="container">
+        <!-- Brand/Logo -->
+        <a class="navbar-brand fw-bold" href="/">
+            <i class="bi bi-fire me-2"></i>
+            SAT
+        </a>
+
+        <!-- Mobile menu button -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" 
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation items -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- Left side navigation -->
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link <%= (typeof page !== 'undefined' && page === 'home') ? 'active' : '' %>" href="/">
+                        <i class="bi bi-house me-1"></i>
+                        Inicio
+                    </a>
+                </li>
+                
+                <% if (typeof user !== 'undefined' && user) { %>
+                    <li class="nav-item">
+                        <a class="nav-link <%= (typeof page !== 'undefined' && page === 'dashboard') ? 'active' : '' %>" href="/dashboard">
+                            <i class="bi bi-speedometer2 me-1"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-clipboard-data me-1"></i>
+                            Reportes
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/api/reports">
+                                <i class="bi bi-list-check me-2"></i>Mis Reportes
+                            </a></li>
+                            <li><a class="dropdown-item" href="/reports/new">
+                                <i class="bi bi-plus-circle me-2"></i>Nuevo Reporte
+                            </a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/api/stats">
+                                <i class="bi bi-graph-up me-2"></i>Estadísticas
+                            </a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-shield-fill-exclamation me-1"></i>
+                            Extintores
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/api/extinguishers">
+                                <i class="bi bi-list me-2"></i>Ver Todos
+                            </a></li>
+                            <% if (user.role === 'admin') { %>
+                                <li><a class="dropdown-item" href="/extinguishers/new">
+                                    <i class="bi bi-plus-circle me-2"></i>Nuevo Extintor
+                                </a></li>
+                            <% } %>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="/api/extinguishers/maintenance-due">
+                                <i class="bi bi-exclamation-triangle me-2"></i>Mantenimiento Pendiente
+                            </a></li>
+                        </ul>
+                    </li>
+                <% } %>
+                
+                <li class="nav-item">
+                    <a class="nav-link <%= (typeof page !== 'undefined' && page === 'about') ? 'active' : '' %>" href="/about">
+                        <i class="bi bi-info-circle me-1"></i>
+                        Acerca de
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link <%= (typeof page !== 'undefined' && page === 'faq') ? 'active' : '' %>" href="/faq">
+                        <i class="bi bi-question-circle me-1"></i>
+                        FAQ
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Right side navigation -->
+            <ul class="navbar-nav">
+                <% if (typeof user !== 'undefined' && user) { %>
+                    <!-- User menu -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" 
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-person-circle me-2"></i>
+                            <span class="d-none d-md-inline"><%= user.full_name %></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="/profile">
+                                    <i class="bi bi-person me-2"></i>Mi Perfil
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="/settings">
+                                    <i class="bi bi-gear me-2"></i>Configuración
+                                </a>
+                            </li>
+                            <% if (user.role === 'admin') { %>
+                                <li><hr class="dropdown-divider"></li>
+                                <li>
+                                    <a class="dropdown-item" href="/admin">
+                                        <i class="bi bi-shield-lock me-2"></i>Panel Admin
+                                    </a>
+                                </li>
+                            <% } %>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form action="/auth/logout" method="POST" class="d-inline">
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        <i class="bi bi-box-arrow-right me-2"></i>Cerrar Sesión
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                <% } else { %>
+                    <!-- Guest navigation -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/auth/login">
+                            <i class="bi bi-box-arrow-in-right me-1"></i>
+                            Iniciar Sesión
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn btn-outline-primary ms-2 px-3" href="/auth/register">
+                            <i class="bi bi-person-plus me-1"></i>
+                            Registrarse
+                        </a>
+                    </li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Breadcrumb (opcional, se puede incluir en páginas específicas) -->
+<% if (typeof breadcrumbs !== 'undefined' && breadcrumbs && breadcrumbs.length > 0) { %>
+<nav aria-label="breadcrumb" class="bg-light border-bottom">
+    <div class="container">
+        <ol class="breadcrumb mb-0 py-2">
+            <% breadcrumbs.forEach(function(crumb, index) { %>
+                <% if (index === breadcrumbs.length - 1) { %>
+                    <li class="breadcrumb-item active" aria-current="page"><%= crumb.text %></li>
+                <% } else { %>
+                    <li class="breadcrumb-item">
+                        <a href="<%= crumb.url %>"><%= crumb.text %></a>
+                    </li>
+                <% } %>
+            <% }); %>
+        </ol>
+    </div>
+</nav>
+<% } %>

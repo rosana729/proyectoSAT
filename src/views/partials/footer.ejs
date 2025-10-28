@@ -1,0 +1,188 @@
+<!-- Footer -->
+<footer class="bg-dark text-white mt-5">
+    <div class="container py-4">
+        <div class="row">
+            <!-- Información de la aplicación -->
+            <div class="col-md-4 mb-3">
+                <h5 class="fw-bold">
+                    <i class="bi bi-shield-fill-check me-2"></i>
+                    SAT
+                </h5>
+                <p class="text-light opacity-75">
+                    Sistema de Administración de Extintores - Herramienta profesional para la gestión y seguimiento 
+                    de equipos contra incendios, inspecciones y mantenimiento preventivo.
+                </p>
+                <div class="d-flex gap-3">
+                    <a href="#" class="text-white-50 text-decoration-none" title="Facebook">
+                        <i class="bi bi-facebook fs-5"></i>
+                    </a>
+                    <a href="#" class="text-white-50 text-decoration-none" title="Twitter">
+                        <i class="bi bi-twitter fs-5"></i>
+                    </a>
+                    <a href="#" class="text-white-50 text-decoration-none" title="LinkedIn">
+                        <i class="bi bi-linkedin fs-5"></i>
+                    </a>
+                    <a href="mailto:contacto@sat-proyecto.com" class="text-white-50 text-decoration-none" title="Email">
+                        <i class="bi bi-envelope fs-5"></i>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Enlaces rápidos -->
+            <div class="col-md-2 mb-3">
+                <h6 class="fw-bold">Enlaces Rápidos</h6>
+                <ul class="list-unstyled">
+                    <li><a href="/" class="text-white-50 text-decoration-none">Inicio</a></li>
+                    <li><a href="/about" class="text-white-50 text-decoration-none">Acerca de</a></li>
+                    <li><a href="/faq" class="text-white-50 text-decoration-none">FAQ</a></li>
+                    <% if (typeof user !== 'undefined' && user) { %>
+                        <li><a href="/dashboard" class="text-white-50 text-decoration-none">Dashboard</a></li>
+                    <% } else { %>
+                        <li><a href="/auth/login" class="text-white-50 text-decoration-none">Iniciar Sesión</a></li>
+                        <li><a href="/auth/register" class="text-white-50 text-decoration-none">Registrarse</a></li>
+                    <% } %>
+                </ul>
+            </div>
+            
+            <!-- Funcionalidades -->
+            <div class="col-md-3 mb-3">
+                <h6 class="fw-bold">Funcionalidades</h6>
+                <ul class="list-unstyled">
+                    <li class="text-white-50 mb-1">
+                        <i class="bi bi-check-circle me-2"></i>
+                        Gestión de Extintores
+                    </li>
+                    <li class="text-white-50 mb-1">
+                        <i class="bi bi-check-circle me-2"></i>
+                        Reportes de Inspección
+                    </li>
+                    <li class="text-white-50 mb-1">
+                        <i class="bi bi-check-circle me-2"></i>
+                        Control de Mantenimiento
+                    </li>
+                    <li class="text-white-50 mb-1">
+                        <i class="bi bi-check-circle me-2"></i>
+                        Alertas Automáticas
+                    </li>
+                    <li class="text-white-50 mb-1">
+                        <i class="bi bi-check-circle me-2"></i>
+                        Estadísticas y Análisis
+                    </li>
+                </ul>
+            </div>
+            
+            <!-- Información de contacto -->
+            <div class="col-md-3 mb-3">
+                <h6 class="fw-bold">Contacto y Soporte</h6>
+                <ul class="list-unstyled">
+                    <li class="text-white-50 mb-2">
+                        <i class="bi bi-envelope me-2"></i>
+                        contacto@sat-proyecto.com
+                    </li>
+                    <li class="text-white-50 mb-2">
+                        <i class="bi bi-telephone me-2"></i>
+                        +54 11 1234-5678
+                    </li>
+                    <li class="text-white-50 mb-2">
+                        <i class="bi bi-geo-alt me-2"></i>
+                        Buenos Aires, Argentina
+                    </li>
+                    <li class="text-white-50 mb-2">
+                        <i class="bi bi-clock me-2"></i>
+                        Lun - Vie: 9:00 - 18:00
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+        <hr class="my-4 opacity-25">
+        
+        <!-- Copyright y enlaces legales -->
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <p class="mb-0 text-white-50">
+                    &copy; <%= new Date().getFullYear() %> SAT Project Team. Todos los derechos reservados.
+                </p>
+            </div>
+            <div class="col-md-6 text-md-end">
+                <small class="text-white-50">
+                    <a href="/privacy" class="text-white-50 text-decoration-none me-3">Política de Privacidad</a>
+                    <a href="/terms" class="text-white-50 text-decoration-none me-3">Términos de Uso</a>
+                    <span class="me-3">|</span>
+                    <span>Versión 1.0.0</span>
+                </small>
+            </div>
+        </div>
+        
+        <!-- Información técnica (solo en desarrollo) -->
+        <% if (process.env.NODE_ENV === 'development') { %>
+        <div class="row mt-3">
+            <div class="col-12">
+                <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <small>
+                        <i class="bi bi-info-circle me-2"></i>
+                        <strong>Modo Desarrollo:</strong> 
+                        Esta aplicación está ejecutándose en modo desarrollo. 
+                        Node.js <%= process.version %> | Puerto <%= process.env.PORT || 3000 %>
+                    </small>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            </div>
+        </div>
+        <% } %>
+    </div>
+</footer>
+
+<!-- Botón "Volver arriba" -->
+<button type="button" class="btn btn-primary btn-floating btn-back-to-top" id="btn-back-to-top" style="display: none;">
+    <i class="bi bi-arrow-up"></i>
+</button>
+
+<!-- Scripts para el footer -->
+<script>
+// Botón "Volver arriba"
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('btn-back-to-top');
+    
+    if (backToTopButton) {
+        // Mostrar/ocultar botón basado en scroll
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopButton.style.display = 'block';
+            } else {
+                backToTopButton.style.display = 'none';
+            }
+        });
+        
+        // Funcionalidad del botón
+        backToTopButton.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+});
+</script>
+
+<style>
+.btn-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.btn-floating:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+</style>

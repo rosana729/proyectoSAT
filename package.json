@@ -1,0 +1,58 @@
+{
+  "name": "sat-project",
+  "version": "1.0.0",
+  "description": "Sistema de Administración de Extintores - Proyecto Node.js con Express y Supabase",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "dev:debug": "DEBUG=sat:* nodemon src/index.js",
+    "setup": "node scripts/setup-env.js",
+    "setup:env": "node scripts/setup-env.js",
+    "setup:full": "npm install && npm run setup:env && npm run db:init",
+    "db:init": "node scripts/init-database.js",
+    "db:verify": "node scripts/init-database.js verify",
+    "validate:env": "node -e \"import('./src/config/keys.js').then(m => m.validateConfig())\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "echo \"Build step not required for this project\"",
+    "lint": "echo \"Linting not configured yet\"",
+    "clean": "rm -rf logs/* uploads/temp/*"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "supabase",
+    "passport",
+    "ejs",
+    "extinguishers",
+    "reports"
+  ],
+  "author": "SAT Project Team",
+  "license": "MIT",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.38.4",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "compression": "^1.8.1",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "express-rate-limit": "^8.1.0",
+    "express-session": "^1.18.2",
+    "express-validator": "^7.0.1",
+    "helmet": "^8.1.0",
+    "morgan": "^1.10.0",
+    "passport": "^0.7.0",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

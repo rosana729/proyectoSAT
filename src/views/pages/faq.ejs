@@ -1,0 +1,494 @@
+<!-- Página de Preguntas Frecuentes -->
+<% 
+const pageData = {
+    page: 'faq'
+};
+%>
+
+<div class="container py-5">
+    <!-- Header -->
+    <div class="row text-center mb-5">
+        <div class="col-lg-8 mx-auto">
+            <h1 class="display-5 fw-bold mb-4">
+                <i class="bi bi-question-circle me-3 text-primary"></i>
+                Preguntas Frecuentes
+            </h1>
+            <p class="lead text-muted">
+                Encuentra respuestas a las preguntas más comunes sobre el Sistema SAT 
+                y la gestión de extintores.
+            </p>
+        </div>
+    </div>
+
+    <!-- Búsqueda -->
+    <div class="row mb-5">
+        <div class="col-lg-6 mx-auto">
+            <div class="input-group input-group-lg">
+                <span class="input-group-text">
+                    <i class="bi bi-search"></i>
+                </span>
+                <input type="text" class="form-control" id="faqSearch" placeholder="Buscar en preguntas frecuentes...">
+            </div>
+        </div>
+    </div>
+
+    <!-- Categorías -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex flex-wrap justify-content-center gap-2 mb-4">
+                <button class="btn btn-outline-primary active" data-category="all">
+                    <i class="bi bi-list me-2"></i>Todas
+                </button>
+                <button class="btn btn-outline-primary" data-category="general">
+                    <i class="bi bi-info-circle me-2"></i>General
+                </button>
+                <button class="btn btn-outline-primary" data-category="account">
+                    <i class="bi bi-person me-2"></i>Cuenta
+                </button>
+                <button class="btn btn-outline-primary" data-category="reports">
+                    <i class="bi bi-clipboard-data me-2"></i>Reportes
+                </button>
+                <button class="btn btn-outline-primary" data-category="maintenance">
+                    <i class="bi bi-tools me-2"></i>Mantenimiento
+                </button>
+                <button class="btn btn-outline-primary" data-category="technical">
+                    <i class="bi bi-gear me-2"></i>Técnico
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accordion de preguntas -->
+    <div class="row">
+        <div class="col-lg-10 mx-auto">
+            <div class="accordion" id="faqAccordion">
+                
+                <!-- General -->
+                <div class="accordion-item faq-item" data-category="general">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1">
+                            ¿Qué es el Sistema SAT?
+                        </button>
+                    </h2>
+                    <div id="faq1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>El Sistema SAT (Sistema de Administración de Extintores) es una plataforma web integral diseñada para la gestión, inspección y mantenimiento de equipos contra incendios. Permite llevar un control detallado de cada extintor, programar mantenimientos, generar reportes automáticos y asegurar el cumplimiento de normativas de seguridad.</p>
+                            <p><strong>Características principales:</strong></p>
+                            <ul>
+                                <li>Inventario completo de extintores</li>
+                                <li>Programación de inspecciones</li>
+                                <li>Reportes automáticos</li>
+                                <li>Alertas y notificaciones</li>
+                                <li>Dashboard con estadísticas</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item" data-category="general">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2">
+                            ¿Cuáles son los beneficios de usar SAT?
+                        </button>
+                    </h2>
+                    <div id="faq2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold text-primary">Eficiencia Operativa:</h6>
+                                    <ul>
+                                        <li>Automatización de procesos</li>
+                                        <li>Reducción de tiempo en inspecciones</li>
+                                        <li>Centralización de información</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h6 class="fw-bold text-success">Cumplimiento Normativo:</h6>
+                                    <ul>
+                                        <li>Seguimiento de regulaciones</li>
+                                        <li>Documentación automática</li>
+                                        <li>Auditorías simplificadas</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cuenta -->
+                <div class="accordion-item faq-item" data-category="account">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3">
+                            ¿Cómo creo una cuenta en SAT?
+                        </button>
+                    </h2>
+                    <div id="faq3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Crear una cuenta es muy sencillo:</p>
+                            <ol>
+                                <li>Haz clic en <strong>"Registrarse"</strong> en la parte superior de la página</li>
+                                <li>Completa el formulario con tus datos:
+                                    <ul>
+                                        <li>Nombre completo</li>
+                                        <li>Email válido</li>
+                                        <li>Contraseña segura</li>
+                                        <li>Rol en la organización</li>
+                                    </ul>
+                                </li>
+                                <li>Acepta los términos y condiciones</li>
+                                <li>Haz clic en "Crear Cuenta"</li>
+                                <li>Verifica tu email (si es requerido)</li>
+                            </ol>
+                            <div class="alert alert-info">
+                                <i class="bi bi-info-circle me-2"></i>
+                                <strong>Tip:</strong> Usa una contraseña de al menos 8 caracteres con letras, números y símbolos.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item" data-category="account">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq4">
+                            ¿Qué tipos de usuarios existen en el sistema?
+                        </button>
+                    </h2>
+                    <div id="faq4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Rol</th>
+                                            <th>Permisos</th>
+                                            <th>Descripción</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><span class="badge bg-danger">Admin</span></td>
+                                            <td>Completos</td>
+                                            <td>Control total del sistema, gestión de usuarios</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="badge bg-warning">Manager</span></td>
+                                            <td>Gestión</td>
+                                            <td>Supervisión de reportes y equipos</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="badge bg-info">Técnico</span></td>
+                                            <td>Operativo</td>
+                                            <td>Inspecciones y mantenimiento</td>
+                                        </tr>
+                                        <tr>
+                                            <td><span class="badge bg-secondary">Visor</span></td>
+                                            <td>Solo lectura</td>
+                                            <td>Consulta de reportes y estadísticas</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Reportes -->
+                <div class="accordion-item faq-item" data-category="reports">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq5">
+                            ¿Cómo genero un reporte de inspección?
+                        </button>
+                    </h2>
+                    <div id="faq5" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Para generar un reporte de inspección sigue estos pasos:</p>
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <ol>
+                                        <li>Ve a <strong>"Reportes"</strong> en el menú principal</li>
+                                        <li>Selecciona <strong>"Nuevo Reporte"</strong></li>
+                                        <li>Elige el extintor a inspeccionar</li>
+                                        <li>Completa el formulario de inspección:
+                                            <ul>
+                                                <li>Estado general</li>
+                                                <li>Presión del manómetro</li>
+                                                <li>Condición de mangueras</li>
+                                                <li>Fecha de vencimiento</li>
+                                                <li>Observaciones</li>
+                                            </ul>
+                                        </li>
+                                        <li>Adjunta fotos si es necesario</li>
+                                        <li>Guarda el reporte</li>
+                                    </ol>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="alert alert-success">
+                                        <i class="bi bi-lightbulb me-2"></i>
+                                        <strong>Consejo:</strong> Los reportes se pueden editar hasta 24 horas después de su creación.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item" data-category="reports">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq6">
+                            ¿Puedo exportar los reportes?
+                        </button>
+                    </h2>
+                    <div id="faq6" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Sí, el sistema permite exportar reportes en múltiples formatos:</p>
+                            <div class="row g-3">
+                                <div class="col-md-4">
+                                    <div class="card border-primary">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-filetype-pdf display-6 text-danger"></i>
+                                            <h6 class="mt-2">PDF</h6>
+                                            <small class="text-muted">Ideal para impresión y archivo</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card border-success">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-filetype-xlsx display-6 text-success"></i>
+                                            <h6 class="mt-2">Excel</h6>
+                                            <small class="text-muted">Para análisis de datos</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card border-info">
+                                        <div class="card-body text-center">
+                                            <i class="bi bi-filetype-csv display-6 text-info"></i>
+                                            <h6 class="mt-2">CSV</h6>
+                                            <small class="text-muted">Compatibilidad universal</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mantenimiento -->
+                <div class="accordion-item faq-item" data-category="maintenance">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq7">
+                            ¿Con qué frecuencia debo inspeccionar los extintores?
+                        </button>
+                    </h2>
+                    <div id="faq7" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>La frecuencia de inspección depende del tipo de extintor y las normativas locales:</p>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <th>Tipo de Inspección</th>
+                                            <th>Frecuencia</th>
+                                            <th>Responsable</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Inspección Visual</td>
+                                            <td>Mensual</td>
+                                            <td>Personal designado</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Mantenimiento Básico</td>
+                                            <td>Anual</td>
+                                            <td>Técnico certificado</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Prueba Hidrostática</td>
+                                            <td>5-12 años</td>
+                                            <td>Empresa especializada</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Recarga/Reemplazo</td>
+                                            <td>Según vencimiento</td>
+                                            <td>Proveedor autorizado</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="alert alert-warning">
+                                <i class="bi bi-exclamation-triangle me-2"></i>
+                                <strong>Importante:</strong> Consulta las normativas locales para requisitos específicos en tu región.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Técnico -->
+                <div class="accordion-item faq-item" data-category="technical">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq8">
+                            ¿Qué navegadores son compatibles con SAT?
+                        </button>
+                    </h2>
+                    <div id="faq8" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>SAT es compatible con los navegadores modernos más populares:</p>
+                            <div class="row g-3 text-center">
+                                <div class="col-6 col-md-3">
+                                    <i class="bi bi-browser-chrome display-4 text-warning"></i>
+                                    <h6 class="mt-2">Chrome</h6>
+                                    <small class="text-success">✓ v90+</small>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <i class="bi bi-browser-firefox display-4 text-warning"></i>
+                                    <h6 class="mt-2">Firefox</h6>
+                                    <small class="text-success">✓ v88+</small>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <i class="bi bi-browser-safari display-4 text-primary"></i>
+                                    <h6 class="mt-2">Safari</h6>
+                                    <small class="text-success">✓ v14+</small>
+                                </div>
+                                <div class="col-6 col-md-3">
+                                    <i class="bi bi-browser-edge display-4 text-info"></i>
+                                    <h6 class="mt-2">Edge</h6>
+                                    <small class="text-success">✓ v90+</small>
+                                </div>
+                            </div>
+                            <div class="alert alert-info mt-3">
+                                <strong>Recomendación:</strong> Mantén tu navegador actualizado para la mejor experiencia.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item faq-item" data-category="technical">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq9">
+                            ¿Qué hago si no puedo acceder al sistema?
+                        </button>
+                    </h2>
+                    <div id="faq9" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                        <div class="accordion-body">
+                            <p>Si tienes problemas para acceder, sigue estos pasos:</p>
+                            <div class="accordion" id="troubleshootAccordion">
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#trouble1">
+                                            1. Verificar credenciales
+                                        </button>
+                                    </h3>
+                                    <div id="trouble1" class="accordion-collapse collapse" data-bs-parent="#troubleshootAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li>Verifica que el email sea correcto</li>
+                                                <li>Asegúrate de usar la contraseña correcta</li>
+                                                <li>Revisa si Caps Lock está activado</li>
+                                                <li>Usa "¿Olvidaste tu contraseña?" si es necesario</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#trouble2">
+                                            2. Limpiar caché del navegador
+                                        </button>
+                                    </h3>
+                                    <div id="trouble2" class="accordion-collapse collapse" data-bs-parent="#troubleshootAccordion">
+                                        <div class="accordion-body">
+                                            <ul>
+                                                <li>Ctrl + Shift + Delete (Windows/Linux)</li>
+                                                <li>Cmd + Shift + Delete (Mac)</li>
+                                                <li>Borra cookies y datos del sitio</li>
+                                                <li>Reinicia el navegador</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="alert alert-primary mt-3">
+                                <i class="bi bi-headset me-2"></i>
+                                <strong>¿Aún tienes problemas?</strong> Contacta a soporte técnico en 
+                                <a href="mailto:soporte@sat-sistema.com">soporte@sat-sistema.com</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Sección de contacto -->
+    <div class="row mt-5">
+        <div class="col-lg-8 mx-auto text-center">
+            <div class="card bg-primary text-white">
+                <div class="card-body p-4">
+                    <h3 class="fw-bold mb-3">¿No encontraste lo que buscabas?</h3>
+                    <p class="mb-4">Nuestro equipo de soporte está aquí para ayudarte</p>
+                    <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+                        <a href="mailto:soporte@sat-sistema.com" class="btn btn-light">
+                            <i class="bi bi-envelope me-2"></i>
+                            Enviar Email
+                        </a>
+                        <a href="/contact" class="btn btn-outline-light">
+                            <i class="bi bi-chat-dots me-2"></i>
+                            Chat en Vivo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts específicos de la página -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const searchInput = document.getElementById('faqSearch');
+    const categoryButtons = document.querySelectorAll('[data-category]');
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    // Función de búsqueda
+    searchInput.addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        
+        faqItems.forEach(item => {
+            const question = item.querySelector('.accordion-button').textContent.toLowerCase();
+            const answer = item.querySelector('.accordion-body').textContent.toLowerCase();
+            
+            if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+    
+    // Filtro por categorías
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const category = this.dataset.category;
+            
+            // Actualizar botones activos
+            categoryButtons.forEach(btn => btn.classList.remove('active'));
+            this.classList.add('active');
+            
+            // Filtrar items
+            faqItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Limpiar búsqueda al cambiar categoría
+            searchInput.value = '';
+        });
+    });
+});
+</script>

@@ -1,0 +1,512 @@
+<!-- Dashboard Principal -->
+<% 
+const pageData = {
+    page: 'dashboard'
+};
+%>
+
+<div class="container-fluid py-4">
+    <!-- Header del Dashboard -->
+    <div class="row mb-4">
+        <div class="col-lg-8">
+            <h1 class="display-6 fw-bold mb-2">
+                <i class="bi bi-speedometer2 me-3 text-primary"></i>
+                Dashboard
+            </h1>
+            <p class="text-muted mb-0">
+                Bienvenido de vuelta, <strong><%= user ? user.name : 'Usuario' %></strong>. 
+                Aquí tienes un resumen del estado actual de tus equipos.
+            </p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+            <div class="d-flex flex-column flex-lg-row gap-2 justify-content-lg-end">
+                <a href="/api/reports/new" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i>
+                    Nuevo Reporte
+                </a>
+                <a href="/api/extinguishers/new" class="btn btn-outline-primary">
+                    <i class="bi bi-shield-plus me-2"></i>
+                    Agregar Extintor
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tarjetas de Estadísticas -->
+    <div class="row mb-4">
+        <div class="col-xl-3 col-md-6 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+                            <i class="bi bi-shield-fill-check text-primary"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="text-muted mb-1">Total Extintores</h6>
+                            <h3 class="fw-bold mb-0" id="totalExtinguishers">---</h3>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <small class="text-success">
+                            <i class="bi bi-arrow-up"></i> 5% vs mes anterior
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+                            <i class="bi bi-check-circle text-success"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="text-muted mb-1">Estado Óptimo</h6>
+                            <h3 class="fw-bold mb-0" id="operationalExtinguishers">---</h3>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <small class="text-success">
+                            <i class="bi bi-check"></i> 95% del total
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-warning bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+                            <i class="bi bi-exclamation-triangle text-warning"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="text-muted mb-1">Requieren Atención</h6>
+                            <h3 class="fw-bold mb-0" id="attentionRequired">---</h3>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <small class="text-warning">
+                            <i class="bi bi-clock"></i> Próximos vencimientos
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-3 col-md-6 mb-3">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-body">
+                    <div class="d-flex align-items-center">
+                        <div class="bg-info bg-opacity-10 rounded-circle d-flex align-items-center justify-content-center me-3" style="width: 48px; height: 48px;">
+                            <i class="bi bi-clipboard-data text-info"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <h6 class="text-muted mb-1">Reportes este Mes</h6>
+                            <h3 class="fw-bold mb-0" id="monthlyReports">---</h3>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <small class="text-info">
+                            <i class="bi bi-graph-up"></i> +12% vs mes anterior
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gráficos y Análisis -->
+    <div class="row mb-4">
+        <div class="col-lg-8 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0 py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold mb-0">
+                            <i class="bi bi-graph-up me-2 text-primary"></i>
+                            Tendencia de Inspecciones
+                        </h5>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <input type="radio" class="btn-check" name="chartPeriod" id="week" autocomplete="off" checked>
+                            <label class="btn btn-outline-primary" for="week">7D</label>
+                            
+                            <input type="radio" class="btn-check" name="chartPeriod" id="month" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="month">30D</label>
+                            
+                            <input type="radio" class="btn-check" name="chartPeriod" id="year" autocomplete="off">
+                            <label class="btn btn-outline-primary" for="year">1A</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="inspectionChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-pie-chart me-2 text-success"></i>
+                        Estado de Extintores
+                    </h5>
+                </div>
+                <div class="card-body d-flex flex-column">
+                    <canvas id="statusChart" width="300" height="300"></canvas>
+                    <div class="mt-3">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-success rounded-circle me-2" style="width: 12px; height: 12px;"></div>
+                                <span class="small">Operativo</span>
+                            </div>
+                            <span class="small fw-bold" id="operativePercentage">85%</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-warning rounded-circle me-2" style="width: 12px; height: 12px;"></div>
+                                <span class="small">Mantenimiento</span>
+                            </div>
+                            <span class="small fw-bold" id="maintenancePercentage">12%</span>
+                        </div>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <div class="bg-danger rounded-circle me-2" style="width: 12px; height: 12px;"></div>
+                                <span class="small">Fuera de Servicio</span>
+                            </div>
+                            <span class="small fw-bold" id="outOfServicePercentage">3%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alertas y Notificaciones -->
+    <div class="row mb-4">
+        <div class="col-lg-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-bell me-2 text-warning"></i>
+                        Alertas Importantes
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div id="alertsContainer">
+                        <!-- Las alertas se cargarán dinámicamente -->
+                        <div class="d-flex align-items-center p-3 bg-warning bg-opacity-10 rounded mb-3">
+                            <i class="bi bi-exclamation-triangle text-warning me-3"></i>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Extintor EXT-001 próximo a vencer</h6>
+                                <small class="text-muted">Vence en 15 días - Ubicación: Planta Baja</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-warning">Ver</button>
+                        </div>
+                        
+                        <div class="d-flex align-items-center p-3 bg-info bg-opacity-10 rounded mb-3">
+                            <i class="bi bi-info-circle text-info me-3"></i>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Mantenimiento programado</h6>
+                                <small class="text-muted">5 extintores requieren inspección esta semana</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-info">Programar</button>
+                        </div>
+                        
+                        <div class="d-flex align-items-center p-3 bg-success bg-opacity-10 rounded">
+                            <i class="bi bi-check-circle text-success me-3"></i>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">Inspección completada</h6>
+                                <small class="text-muted">EXT-025 - Estado: Operativo</small>
+                            </div>
+                            <button class="btn btn-sm btn-outline-success">Ver Reporte</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 mb-4">
+            <div class="card border-0 shadow-sm h-100">
+                <div class="card-header bg-white border-0 py-3">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h5 class="fw-bold mb-0">
+                            <i class="bi bi-clock-history me-2 text-info"></i>
+                            Actividad Reciente
+                        </h5>
+                        <a href="/api/reports" class="btn btn-sm btn-outline-primary">Ver Todos</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div id="activityContainer">
+                        <!-- La actividad se cargará dinámicamente -->
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="bg-primary rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 32px; height: 32px;">
+                                <i class="bi bi-clipboard-plus text-white small"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1 small">Nuevo reporte creado</h6>
+                                <p class="mb-1 small text-muted">EXT-045 - Inspección mensual</p>
+                                <small class="text-muted">Hace 2 horas</small>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="bg-success rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 32px; height: 32px;">
+                                <i class="bi bi-check-circle text-white small"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1 small">Mantenimiento completado</h6>
+                                <p class="mb-1 small text-muted">EXT-012 - Recarga realizada</p>
+                                <small class="text-muted">Hace 5 horas</small>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="bg-warning rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 32px; height: 32px;">
+                                <i class="bi bi-exclamation-triangle text-white small"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1 small">Alerta generada</h6>
+                                <p class="mb-1 small text-muted">EXT-003 - Presión baja detectada</p>
+                                <small class="text-muted">Hace 1 día</small>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <div class="bg-info rounded-circle d-flex align-items-center justify-content-center me-3 flex-shrink-0" style="width: 32px; height: 32px;">
+                                <i class="bi bi-shield-plus text-white small"></i>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1 small">Nuevo extintor registrado</h6>
+                                <p class="mb-1 small text-muted">EXT-050 - Oficina Principal</p>
+                                <small class="text-muted">Hace 2 días</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accesos Rápidos -->
+    <div class="row">
+        <div class="col-12">
+            <div class="card border-0 shadow-sm">
+                <div class="card-header bg-white border-0 py-3">
+                    <h5 class="fw-bold mb-0">
+                        <i class="bi bi-lightning-charge me-2 text-primary"></i>
+                        Accesos Rápidos
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <a href="/api/reports/new" class="text-decoration-none">
+                                <div class="text-center p-3 border rounded hover-lift">
+                                    <i class="bi bi-plus-circle display-6 text-primary mb-2"></i>
+                                    <h6 class="mb-0">Nuevo Reporte</h6>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <a href="/api/extinguishers" class="text-decoration-none">
+                                <div class="text-center p-3 border rounded hover-lift">
+                                    <i class="bi bi-shield-fill-check display-6 text-success mb-2"></i>
+                                    <h6 class="mb-0">Ver Extintores</h6>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <a href="/api/reports" class="text-decoration-none">
+                                <div class="text-center p-3 border rounded hover-lift">
+                                    <i class="bi bi-clipboard-data display-6 text-info mb-2"></i>
+                                    <h6 class="mb-0">Historial</h6>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <a href="/api/analytics" class="text-decoration-none">
+                                <div class="text-center p-3 border rounded hover-lift">
+                                    <i class="bi bi-graph-up-arrow display-6 text-warning mb-2"></i>
+                                    <h6 class="mb-0">Análisis</h6>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <a href="/api/maintenance" class="text-decoration-none">
+                                <div class="text-center p-3 border rounded hover-lift">
+                                    <i class="bi bi-tools display-6 text-secondary mb-2"></i>
+                                    <h6 class="mb-0">Mantenimiento</h6>
+                                </div>
+                            </a>
+                        </div>
+                        
+                        <div class="col-lg-2 col-md-4 col-6">
+                            <a href="/api/settings" class="text-decoration-none">
+                                <div class="text-center p-3 border rounded hover-lift">
+                                    <i class="bi bi-gear display-6 text-dark mb-2"></i>
+                                    <h6 class="mb-0">Configuración</h6>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Scripts específicos del dashboard -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Configuración de gráficos
+    const ctxInspection = document.getElementById('inspectionChart').getContext('2d');
+    const ctxStatus = document.getElementById('statusChart').getContext('2d');
+    
+    // Gráfico de línea para inspecciones
+    const inspectionChart = new Chart(ctxInspection, {
+        type: 'line',
+        data: {
+            labels: ['Lun', 'Mar', 'Mié', 'Jue', 'Vie', 'Sáb', 'Dom'],
+            datasets: [{
+                label: 'Inspecciones',
+                data: [12, 19, 8, 15, 22, 8, 16],
+                borderColor: 'rgb(13, 110, 253)',
+                backgroundColor: 'rgba(13, 110, 253, 0.1)',
+                tension: 0.4,
+                fill: true
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    grid: {
+                        display: true,
+                        color: 'rgba(0,0,0,0.1)'
+                    }
+                },
+                x: {
+                    grid: {
+                        display: false
+                    }
+                }
+            }
+        }
+    });
+    
+    // Gráfico de dona para estado
+    const statusChart = new Chart(ctxStatus, {
+        type: 'doughnut',
+        data: {
+            labels: ['Operativo', 'Mantenimiento', 'Fuera de Servicio'],
+            datasets: [{
+                data: [85, 12, 3],
+                backgroundColor: [
+                    'rgb(25, 135, 84)',
+                    'rgb(255, 193, 7)',
+                    'rgb(220, 53, 69)'
+                ],
+                borderWidth: 0
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+                legend: {
+                    display: false
+                }
+            },
+            cutout: '70%'
+        }
+    });
+    
+    // Cargar datos del dashboard
+    loadDashboardData();
+    
+    // Actualizar cada 5 minutos
+    setInterval(loadDashboardData, 300000);
+    
+    // Efectos hover para accesos rápidos
+    const hoverElements = document.querySelectorAll('.hover-lift');
+    hoverElements.forEach(element => {
+        element.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-2px)';
+            this.style.boxShadow = '0 4px 8px rgba(0,0,0,0.1)';
+            this.style.transition = 'all 0.2s ease';
+        });
+        
+        element.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+        });
+    });
+});
+
+async function loadDashboardData() {
+    try {
+        // Simular carga de datos (reemplazar con llamadas reales a la API)
+        const response = await fetch('/api/dashboard/stats');
+        
+        if (response.ok) {
+            const data = await response.json();
+            
+            // Actualizar estadísticas
+            document.getElementById('totalExtinguishers').textContent = data.total || 156;
+            document.getElementById('operationalExtinguishers').textContent = data.operational || 148;
+            document.getElementById('attentionRequired').textContent = data.attention || 8;
+            document.getElementById('monthlyReports').textContent = data.reports || 47;
+        } else {
+            // Datos de ejemplo si la API no está disponible
+            document.getElementById('totalExtinguishers').textContent = '156';
+            document.getElementById('operationalExtinguishers').textContent = '148';
+            document.getElementById('attentionRequired').textContent = '8';
+            document.getElementById('monthlyReports').textContent = '47';
+        }
+    } catch (error) {
+        console.log('Usando datos de ejemplo');
+        // Mostrar datos de ejemplo
+        document.getElementById('totalExtinguishers').textContent = '156';
+        document.getElementById('operationalExtinguishers').textContent = '148';
+        document.getElementById('attentionRequired').textContent = '8';
+        document.getElementById('monthlyReports').textContent = '47';
+    }
+}
+</script>
+
+<style>
+.hover-lift {
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.hover-lift:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1) !important;
+}
+
+#inspectionChart {
+    height: 300px !important;
+}
+
+#statusChart {
+    height: 250px !important;
+}
+</style>

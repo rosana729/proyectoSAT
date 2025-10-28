@@ -1,0 +1,223 @@
+<!-- Página de inicio -->
+<% 
+const pageData = {
+    page: 'home'
+};
+%>
+
+<div class="hero-section bg-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center min-vh-50">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="bi bi-shield-fill-check me-3"></i>
+                    Sistema SAT
+                </h1>
+                <h2 class="h3 mb-4 opacity-90">
+                    Administración Inteligente de Extintores
+                </h2>
+                <p class="lead mb-4">
+                    Gestiona, inspecciona y mantén el control total de tus equipos contra incendios 
+                    con nuestro sistema profesional diseñado para la seguridad y eficiencia.
+                </p>
+                
+                <div class="d-flex flex-column flex-sm-row gap-3">
+                    <% if (typeof user !== 'undefined' && user) { %>
+                        <a href="/dashboard" class="btn btn-light btn-lg px-4">
+                            <i class="bi bi-speedometer2 me-2"></i>
+                            Ir al Dashboard
+                        </a>
+                        <a href="/api/reports" class="btn btn-outline-light btn-lg px-4">
+                            <i class="bi bi-clipboard-data me-2"></i>
+                            Ver Reportes
+                        </a>
+                    <% } else { %>
+                        <a href="/auth/register" class="btn btn-light btn-lg px-4">
+                            <i class="bi bi-person-plus me-2"></i>
+                            Comenzar Ahora
+                        </a>
+                        <a href="/auth/login" class="btn btn-outline-light btn-lg px-4">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>
+                            Iniciar Sesión
+                        </a>
+                    <% } %>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 text-center">
+                <div class="hero-image mt-4 mt-lg-0">
+                    <i class="bi bi-fire display-1 opacity-75"></i>
+                    <div class="row justify-content-center mt-4">
+                        <div class="col-4">
+                            <i class="bi bi-shield-check display-4 text-success"></i>
+                            <p class="small mt-2 opacity-75">Seguridad</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="bi bi-graph-up display-4 text-info"></i>
+                            <p class="small mt-2 opacity-75">Control</p>
+                        </div>
+                        <div class="col-4">
+                            <i class="bi bi-clock-history display-4 text-warning"></i>
+                            <p class="small mt-2 opacity-75">Mantenimiento</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Características principales -->
+<section class="py-5">
+    <div class="container">
+        <div class="row text-center mb-5">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="display-5 fw-bold mb-4">¿Por qué elegir SAT?</h2>
+                <p class="lead text-muted">
+                    Nuestro sistema ofrece una solución integral para la gestión de extintores, 
+                    cumpliendo con las normativas de seguridad y optimizando tus procesos.
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="bg-primary bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-clipboard-data fs-1 text-primary"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Reportes Inteligentes</h4>
+                        <p class="text-muted">
+                            Genera reportes automáticos de inspección con formularios intuitivos 
+                            y seguimiento en tiempo real del estado de cada extintor.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="bg-success bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-bell fs-1 text-success"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Alertas Automáticas</h4>
+                        <p class="text-muted">
+                            Recibe notificaciones automáticas sobre mantenimientos próximos, 
+                            inspecciones vencidas y equipos que requieren atención.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm h-100 text-center">
+                    <div class="card-body p-4">
+                        <div class="bg-info bg-opacity-10 rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 80px; height: 80px;">
+                            <i class="bi bi-graph-up-arrow fs-1 text-info"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Análisis y Estadísticas</h4>
+                        <p class="text-muted">
+                            Visualiza tendencias, patrones de mantenimiento y optimiza 
+                            la gestión de tus equipos con dashboards interactivos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Estadísticas -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <i class="bi bi-shield-fill-check display-4 text-primary mb-3"></i>
+                    <h3 class="fw-bold text-primary" data-count="1500">0</h3>
+                    <p class="text-muted">Extintores Monitoreados</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <i class="bi bi-clipboard-check display-4 text-success mb-3"></i>
+                    <h3 class="fw-bold text-success" data-count="350">0</h3>
+                    <p class="text-muted">Reportes Generados</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <i class="bi bi-people display-4 text-info mb-3"></i>
+                    <h3 class="fw-bold text-info" data-count="75">0</h3>
+                    <p class="text-muted">Usuarios Activos</p>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 mb-4">
+                <div class="stat-item">
+                    <i class="bi bi-clock-history display-4 text-warning mb-3"></i>
+                    <h3 class="fw-bold text-warning" data-count="99">0</h3>
+                    <p class="text-muted">% Cumplimiento</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Call to Action -->
+<% if (typeof user === 'undefined' || !user) { %>
+<section class="py-5 bg-dark text-white">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h2 class="display-6 fw-bold mb-3">¿Listo para mejorar tu gestión de seguridad?</h2>
+                <p class="lead mb-0">
+                    Únete a cientos de empresas que ya confían en SAT para la administración 
+                    de sus equipos contra incendios.
+                </p>
+            </div>
+            <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                <a href="/auth/register" class="btn btn-primary btn-lg px-5">
+                    <i class="bi bi-rocket-takeoff me-2"></i>
+                    Comenzar Gratis
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<% } %>
+
+<!-- Scripts específicos de la página -->
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Animación de contador para estadísticas
+    const countElements = document.querySelectorAll('[data-count]');
+    
+    const animateCount = (element, target) => {
+        let current = 0;
+        const increment = target / 100;
+        const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+                current = target;
+                clearInterval(timer);
+            }
+            element.textContent = Math.floor(current);
+        }, 20);
+    };
+    
+    // Intersection Observer para activar animaciones cuando entren en viewport
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const target = parseInt(entry.target.dataset.count);
+                animateCount(entry.target, target);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+    
+    countElements.forEach(el => observer.observe(el));
+});
+</script>

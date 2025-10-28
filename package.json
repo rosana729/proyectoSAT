@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/index.js",
+    "build": "echo 'Build completed'",
     "dev": "nodemon src/index.js",
     "dev:debug": "DEBUG=sat:* nodemon src/index.js",
     "setup": "node scripts/setup-env.js",
@@ -15,9 +16,9 @@
     "db:verify": "node scripts/init-database.js verify",
     "validate:env": "node -e \"import('./src/config/keys.js').then(m => m.validateConfig())\"",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo \"Build step not required for this project\"",
     "lint": "echo \"Linting not configured yet\"",
-    "clean": "rm -rf logs/* uploads/temp/*"
+    "clean": "rm -rf logs/* uploads/temp/*",
+    "vercel-build": "echo 'Vercel build completed'"
   },
   "keywords": [
     "node",

@@ -1,7 +1,7 @@
 {
   "name": "sat-project",
   "version": "1.0.2-otro",
-  "description": "Sistema de Administración de Extintores - Proyecto Node.js con Express y Supabase [RAMA OTRO]",
+  "description": "Sistema de Alerta Temprana - La app que faltaba en Seguridad e Higiene [RAMA OTRO]",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
@@ -25,8 +25,13 @@
     "supabase",
     "passport",
     "ejs",
-    "extinguishers",
-    "reports"
+    "seguridad",
+    "higiene",
+    "alerta-temprana",
+    "relevamientos",
+    "informes",
+    "controles",
+    "offline"
   ],
   "author": "SAT Project Team",
   "license": "MIT",

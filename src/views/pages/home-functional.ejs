@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%= title || 'SAT - Sistema de Administración de Extintores' %></title>
+    <title><%= title || 'SAT - Sistema de Alerta Temprana' %></title>
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -98,6 +98,58 @@
             color: white;
             padding: 8rem 0 6rem;
             position: relative;
+            min-height: 100vh;
+        }
+
+        /* Mobile responsive improvements */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 0 4rem;
+                min-height: 90vh;
+            }
+            
+            .navbar-brand {
+                font-size: 1.4rem;
+            }
+            
+            .navbar-nav .nav-link {
+                margin: 0.2rem 0;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.2;
+            }
+            
+            .hero .lead {
+                font-size: 1.1rem !important;
+            }
+            
+            .btn-lg {
+                padding: 0.75rem 2rem !important;
+                font-size: 1rem !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero {
+                padding: 5rem 0 3rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem !important;
+            }
+            
+            .hero .lead {
+                font-size: 1rem !important;
+            }
+            
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+        }
             overflow: hidden;
             margin-top: 76px;
         }
@@ -218,6 +270,7 @@
             background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
             box-shadow: 0 8px 25px rgba(0,0,0,0.05);
             transition: all 0.3s ease;
+            margin-bottom: 2rem;
         }
 
         .stat-card:hover {
@@ -241,9 +294,36 @@
             font-size: 0.9rem;
         }
 
+        /* Mobile responsive for stats */
+        @media (max-width: 768px) {
+            .stats-section {
+                padding: 2rem 0;
+                margin-top: -2rem;
+            }
+            
+            .stat-card {
+                padding: 1.5rem 1rem;
+                margin-bottom: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .stat-label {
+                font-size: 0.8rem;
+            }
+        }
+
         /* Secciones */
         .section {
             padding: 5rem 0;
+        }
+
+        @media (max-width: 768px) {
+            .section {
+                padding: 3rem 0;
+            }
         }
 
         .section-title {
@@ -276,6 +356,7 @@
             height: 100%;
             position: relative;
             overflow: hidden;
+            margin-bottom: 2rem;
         }
 
         .feature-card::before {
@@ -293,6 +374,26 @@
             box-shadow: 0 25px 50px rgba(37, 99, 235, 0.15);
         }
 
+        /* Mobile responsive for feature cards */
+        @media (max-width: 768px) {
+            .feature-card {
+                padding: 2rem 1.5rem;
+                margin-bottom: 1.5rem;
+                border-radius: 16px;
+            }
+            
+            .feature-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .feature-card {
+                padding: 1.5rem 1rem;
+                text-align: center;
+            }
+        }
+
         .feature-icon {
             width: 80px;
             height: 80px;
@@ -304,6 +405,25 @@
             font-size: 2.2rem;
             color: white;
             position: relative;
+        }
+
+        /* Mobile responsive for feature icons */
+        @media (max-width: 768px) {
+            .feature-icon {
+                width: 70px;
+                height: 70px;
+                font-size: 2rem;
+                margin: 0 auto 1.5rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .feature-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+                border-radius: 16px;
+            }
         }
 
         .feature-icon.reports {
@@ -357,6 +477,7 @@
             position: relative;
             overflow: hidden;
             height: 100%;
+            margin-bottom: 2rem;
         }
 
         .pricing-card.popular {
@@ -385,6 +506,37 @@
 
         .pricing-card.popular:hover {
             transform: translateY(-10px) scale(1.05);
+        }
+
+        /* Mobile responsive for pricing cards */
+        @media (max-width: 992px) {
+            .pricing-card.popular {
+                transform: none;
+                margin-top: 0;
+            }
+            
+            .pricing-card.popular:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-card {
+                padding: 2rem 1.5rem;
+                border-radius: 20px;
+                margin-bottom: 1.5rem;
+            }
+            
+            .pricing-card:hover {
+                transform: translateY(-5px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .pricing-card {
+                padding: 1.5rem 1rem;
+                text-align: center;
+            }
         }
 
         .price {
@@ -570,32 +722,83 @@
             transform: translateY(-2px);
         }
 
-        /* Responsive */
+        /* FAQ Responsive */
+        .faq-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .faq-item {
+                margin-bottom: 0.75rem;
+                border-radius: 10px;
             }
             
-            .hero p.lead {
+            .faq-question {
+                padding: 1rem !important;
+                font-size: 1rem !important;
+            }
+            
+            .faq-answer {
+                padding: 0 1rem 1rem !important;
+                font-size: 0.9rem !important;
+                line-height: 1.6 !important;
+            }
+            
+            .faq-icon {
+                font-size: 1rem !important;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .faq-question {
+                padding: 0.8rem !important;
+                font-size: 0.95rem !important;
+            }
+            
+            .faq-answer {
+                padding: 0 0.8rem 0.8rem !important;
+            }
+        }
+
+        /* Footer Responsive */
+        @media (max-width: 768px) {
+            .footer {
+                padding: 2rem 0 1rem;
+                text-align: center;
+            }
+            
+            .footer .row > div {
+                margin-bottom: 2rem;
+            }
+            
+            .social-links {
+                justify-content: center;
+                margin-top: 1rem;
+            }
+            
+            .footer ul {
+                margin-bottom: 1rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .footer h5 {
                 font-size: 1.1rem;
             }
             
-            .btn-custom {
-                padding: 0.8rem 1.5rem;
-                font-size: 1rem;
+            .footer ul li {
+                margin-bottom: 0.3rem;
             }
             
-            .pricing-card.popular {
-                transform: none;
-                margin-top: 2rem;
-            }
-            
-            .pricing-card.popular:hover {
-                transform: translateY(-10px);
-            }
-            
-            .navbar-nav {
-                text-align: center;
+            .social-link {
+                width: 35px;
+                height: 35px;
+                font-size: 0.9rem;
             }
         }
 
@@ -618,7 +821,7 @@
     <nav class="navbar navbar-expand-lg">
         <div class="container">
             <a class="navbar-brand" href="/">
-                <i class="bi bi-shield-fill-check me-2"></i>SAT
+                <i class="bi bi-exclamation-triangle-fill me-2"></i>SAT
             </a>
             
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -666,10 +869,10 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-12 text-center hero-content">
-                    <h1>Sistema de Administración de Extintores</h1>
+                    <h1>Sistema de Alerta Temprana</h1>
                     <p class="lead">
-                        Gestiona, monitorea y mantén tus extintores de forma inteligente y eficiente. 
-                        Control total con reportes en tiempo real.
+                        La app que faltaba en Seguridad e Higiene. Relevamientos, informes y controles, incluso sin conexión.
+                        Optimiza tu tiempo en cada visita y accede a todo tu historial.
                     </p>
                     <div class="mt-4">
                         <a href="/auth/register" class="btn-custom btn-primary-custom">
@@ -688,28 +891,28 @@
     <section class="stats-section">
         <div class="container">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
                     <div class="stat-card scroll-animate">
-                        <span class="stat-number">150+</span>
+                        <span class="stat-number">300+</span>
                         <span class="stat-label">Empresas Activas</span>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
                     <div class="stat-card scroll-animate">
-                        <span class="stat-number">5,000+</span>
-                        <span class="stat-label">Extintores Monitoreados</span>
+                        <span class="stat-number">15,000+</span>
+                        <span class="stat-label">Relevamientos Realizados</span>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
                     <div class="stat-card scroll-animate">
-                        <span class="stat-number">98%</span>
-                        <span class="stat-label">Tiempo de Actividad</span>
+                        <span class="stat-number">99%</span>
+                        <span class="stat-label">Disponibilidad Offline</span>
                     </div>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12 mb-4">
                     <div class="stat-card scroll-animate">
                         <span class="stat-number">24/7</span>
-                        <span class="stat-label">Soporte Técnico</span>
+                        <span class="stat-label">Sincronización</span>
                     </div>
                 </div>
             </div>
@@ -721,11 +924,11 @@
         <div class="container">
             <div class="section-title scroll-animate">
                 <h2>Funcionalidades Principales</h2>
-                <p>Descubre todas las herramientas que SAT te ofrece para optimizar la gestión de tus extintores</p>
+                <p>Descubre todas las herramientas que SAT te ofrece para optimizar tu trabajo en Seguridad e Higiene</p>
             </div>
             
             <div class="row">
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <div class="feature-card scroll-animate">
                         <div class="feature-icon reports">
                             <i class="bi bi-grid-3x3-gap"></i>
@@ -735,7 +938,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <div class="feature-card scroll-animate">
                         <div class="feature-icon digital-signature">
                             <i class="bi bi-pen"></i>
@@ -745,7 +948,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <div class="feature-card scroll-animate">
                         <div class="feature-icon history">
                             <i class="bi bi-bar-chart"></i>
@@ -755,7 +958,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <div class="feature-card scroll-animate">
                         <div class="feature-icon risk-assessment">
                             <i class="bi bi-search"></i>
@@ -765,17 +968,17 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <div class="feature-card scroll-animate">
                         <div class="feature-icon extinguisher-control">
                             <i class="bi bi-shield-exclamation"></i>
                         </div>
-                        <h3>Control de Extintores</h3>
-                        <p>Registra y controla el estado de extintores en cada visita con fotografías y observaciones detalladas.</p>
+                        <h3>Control de Seguridad</h3>
+                        <p>Registra y controla elementos de seguridad en cada visita con fotografías y observaciones detalladas.</p>
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <div class="feature-card scroll-animate">
                         <div class="feature-icon planning">
                             <i class="bi bi-calendar-check"></i>
@@ -797,7 +1000,7 @@
             </div>
             
             <div class="row justify-content-center">
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <div class="pricing-card scroll-animate">
                         <h3 class="text-center mb-3 fw-bold">Básico</h3>
                         <div class="text-center">
@@ -815,7 +1018,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <div class="pricing-card popular scroll-animate">
                         <h3 class="text-center mb-3 fw-bold">Profesional</h3>
                         <div class="text-center">
@@ -835,7 +1038,7 @@
                     </div>
                 </div>
                 
-                <div class="col-lg-4 col-md-6 mb-4">
+                <div class="col-lg-4 col-md-6 col-12 mb-4">
                     <div class="pricing-card scroll-animate">
                         <h3 class="text-center mb-3 fw-bold">Enterprise</h3>
                         <div class="text-center">

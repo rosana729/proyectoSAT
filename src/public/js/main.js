@@ -1,18 +1,17 @@
-// Archivo JS principal - puedes mover aquí los scripts desde tu index.html
-// JavaScript extraído desde index.html
-
-// Scroll suave para anclas internas
+// Esperar a que el DOM esté completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
+  
+  // Scroll suave
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
       const href = this.getAttribute('href');
       if (href === '#' || href === '#login') return;
+      
       const target = document.querySelector(href);
       if (target) {
-        // Cerrar menú móvil si está abierto
-        const navLinksEl = document.getElementById('navLinks');
-        if (navLinksEl) navLinksEl.classList.remove('active');
+        const navLinks = document.getElementById('navLinks');
+        if (navLinks) navLinks.classList.remove('active');
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
@@ -33,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
+  
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       navLinks.classList.toggle('active');
@@ -47,16 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // FAQ Toggle
-  document.querySelectorAll('.faq-question').forEach(question => {
-    question.addEventListener('click', () => {
-      const item = question.parentElement;
-      const isActive = item.classList.contains('active');
-      // Cerrar todos
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-      // Abrir el clickeado si no estaba activo
-      if (!isActive) {
-        item.classList.add('active');
-      }
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.faq-question').forEach(question => {
+      question.addEventListener('click', () => {
+        const item = question.parentElement;
+        const isActive = item.classList.contains('active');
+        
+        // Cerrar todos
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+        
+        // Abrir el clickeado si no estaba activo
+        if (!isActive) {
+          item.classList.add('active');
+        }
+      });
     });
   });
 
@@ -79,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
     observer.observe(el);
   });
 
-  // Smooth stats animation
+  // Stats animation
   const statsObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -87,6 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
         stats.forEach((stat, index) => {
           const finalValue = stat.textContent;
           stat.textContent = '0';
+          
           setTimeout(() => {
             const isNumber = !isNaN(parseInt(finalValue));
             if (isNumber) {
@@ -102,13 +107,16 @@ document.addEventListener('DOMContentLoaded', () => {
   }, { threshold: 0.5 });
 
   const statsSection = document.querySelector('.stats');
-  if (statsSection) statsObserver.observe(statsSection);
+  if (statsSection) {
+    statsObserver.observe(statsSection);
+  }
 
   function animateNumber(element, target) {
     const duration = 2000;
     const steps = 60;
     const increment = target / steps;
     let current = 0;
+    
     const timer = setInterval(() => {
       current += increment;
       if (current >= target) {
@@ -122,14 +130,126 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Prevenir que los enlaces # hagan scroll
   document.querySelectorAll('a[href="#"]').forEach(link => {
-    link.addEventListener('click', (e) => { e.preventDefault(); });
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+    });
+  });
+
+  console.log('✅ SAT - Sistema inicializado correctamente');
+});
+
+// Función auxiliar para detectar dispositivo móvil
+function isMobile() {
+  return window.innerWidth <= 768;
+}
+
+// Prevenir comportamiento por defecto en enlaces vacíos
+document.addEventListener('click', (e) => {
+  if (e.target.matches('a[href="#"]')) {
+    e.preventDefault();
+  }
+});
+// =============================
+// FAQ Toggle Animation
+// =============================
+document.addEventListener('DOMContentLoaded', () => {
+  const faqQuestions = document.querySelectorAll('.faq-question');
+
+  faqQuestions.forEach(button => {
+    button.addEventListener('click', () => {
+      const faqItem = button.parentElement;
+      const answer = faqItem.querySelector('.faq-answer');
+
+      // Cierra cualquier otra pregunta abierta
+      document.querySelectorAll('.faq-item').forEach(item => {
+        if (item !== faqItem) {
+          item.classList.remove('active');
+          item.querySelector('.faq-answer').style.maxHeight = null;
+        }
+      });
+
+      // Alterna la actual
+      faqItem.classList.toggle('active');
+
+      if (faqItem.classList.contains('active')) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      } else {
+        answer.style.maxHeight = null;
+      }
+    });
   });
 });
-// Ejemplo: toggle menú móvil
+
+// =============================
+// Scroll suave para los enlaces
+// =============================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function (e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+
+// FAQ Toggle
 document.addEventListener('DOMContentLoaded', () => {
-  const menuToggle = document.getElementById('menuToggle');
-  const navLinks = document.getElementById('navLinks');
-  if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('active'));
-  }
+    document.querySelectorAll('.faq-question').forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            const wasActive = item.classList.contains('active');
+            
+            // Cerrar todos
+            document.querySelectorAll('.faq-item').forEach(i => {
+                i.classList.remove('active');
+            });
+            
+            // Abrir el clickeado si no estaba activo
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+});
+
+// FAQ functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    console.log('FAQ items found:', faqItems.length); // Debug line
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        question.addEventListener('click', () => {
+            console.log('FAQ clicked'); // Debug line
+            const currentlyActive = item.classList.contains('active');
+            faqItems.forEach(faq => faq.classList.remove('active'));
+            if (!currentlyActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+});
+
+// FAQ Toggle functionality
+document.addEventListener('DOMContentLoaded', () => {
+    const faqItems = document.querySelectorAll('.faq-item');
+    
+    faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+        
+        question.addEventListener('click', () => {
+            const wasActive = item.classList.contains('active');
+            
+            // Cerrar todos los FAQs
+            faqItems.forEach(faq => {
+                faq.classList.remove('active');
+            });
+            
+            // Abrir el actual si no estaba activo
+            if (!wasActive) {
+                item.classList.add('active');
+            }
+        });
+    });
 });
